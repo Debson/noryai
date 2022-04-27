@@ -16,22 +16,21 @@ After you complete this challenge we will have a meeting where you will present 
 
 ## Overview
 
-
 Your challenge if you choose to accept it, is to build a **Navbar** component feature with a placeholder screen for the Nory web application. This component will be used to toggle and navigate around the application’s modules based on URL and display content.
 
 Our customers’ device usage is as follows:
 
--   40% laptop screens
--   30% tablets
--   30% mobile phones
+- 40% laptop screens
+- 30% tablets
+- 30% mobile phones
 
 Based on these stats, the component has to be fully responsive across devices, starting at 320px wide.
 
 For the purpose of this task, there are no interactions on this screen outside of:
 
--   Hover states, marked with a mouse pointer icon
--   Navigating to different screens with URL change.
--   Displaying placeholder text and image via making an api call to [https://dog.ceo/dog-api/](https://dog.ceo/dog-api/).
+- Hover states, marked with a mouse pointer icon
+- Navigating to different screens with URL change.
+- Displaying placeholder text and image via making an api call to [https://dog.ceo/dog-api/](https://dog.ceo/dog-api/).
 
 Our layout grid, container size, colors, font sizes, and other specs are all available in the Figma file below, so be sure to inspect the linked Figma file and prototype thoroughly! You may need to create a free Figma account to access the Inspect functionality.
 
@@ -67,23 +66,20 @@ ETC Epilogue - [](https://fonts.google.com/specimen/Epilogue)[https://fonts.goog
 
 System font stack (e.g. San Francisco on MacOS, Segoe UI on Windows, Roboto on Android, etc.)
 
-
 ## What We'll Talk About in the Call
 
-Once you've completed the challenge let us know and will set up a call where we can talk through it. 
+Once you've completed the challenge let us know and will set up a call where we can talk through it.
 
 We'll ask questions about what approach you took and why. We'll ask questions about what assumptions you might have made, and why.
 
-From there we will also look at the code and hear any decisions that you have made.  
+From there we will also look at the code and hear any decisions that you have made.
 
 And of course, we want to hear your thoughts and answer any questions you have.
-
 
 ## tl;dr
 
 So that's that. How does it sound? A whole lot of details, we know !!!
 
 **Oh, and one last thing... best of luck! We're really happy you've decided to take part in the challenge, and we look forward to seeing your epic solution.** 😎
-
 
 _Disclaimer: upon accepting your code, Hospitality Growth Limited, t/a Nory, you give us permission to delete the work once the interview process has been completed. You agree that this is in accordance with EU GDPR legislation._
