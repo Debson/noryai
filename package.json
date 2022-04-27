@@ -21,11 +21,38 @@
     "typescript": "^4.6.3",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "eslint": "^8.14.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2",
+    "sass": "^1.51.0",
+    "stylelint": "^14.8.0",
+    "stylelint-config-recommended-scss": "^6.0.0",
+    "stylelint-order": "^5.0.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:base": "eslint --ext=ts,tsx",
+    "lint": "npm run lint:base src",
+    "lint:fix": "npm run lint --fix",
+    "stylelint:base": "stylelint",
+    "stylelint": "npm run stylelint:base \"src/**/*.scss\"",
+    "stylelint:fix": "npm run stylelint --fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "npm run lint:fix"
+    ],
+    "src/**/*.scss": [
+      "npm run stylelint:fix"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -44,13 +71,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint": "^8.14.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.4.1",
-    "stylelint": "^14.8.0"
   }
 }
