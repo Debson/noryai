@@ -1,17 +1,24 @@
-import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
-import counterReducer from "./counter/counterSlice";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import { all, fork } from 'redux-saga/effects';
+import { navBarReducer } from './navbar';
+import { navBarSaga } from './navbar/sagas';
+import { RootState } from './state.model';
+
+const appReducer = combineReducers<RootState>({ navBar: navBarReducer });
+
+export function* rootSaga() {
+  yield all([fork(navBarSaga)]);
+}
+
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
+  reducer: appReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(sagaMiddleware),
 });
 
+sagaMiddleware.run(rootSaga);
+
 export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
