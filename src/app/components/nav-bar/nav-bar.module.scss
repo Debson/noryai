@@ -12,7 +12,9 @@
     }
 }
 
-.navBarBase {
+.navBarContainer {
+    background-color: $color-nav-bar-bg;
+
     .headerIcon {
         @include iconSize($nav-bar-header-icon-size);
         @include iconColor($color-icon);
@@ -20,49 +22,27 @@
 
     .elementIcon {
         @include iconSize($nav-bar-icon-size);
-
         // #region Disabled styling
         @include iconColor($color-icon-disabled);
         opacity: 0.3;
         // #endregion Disabled styling
 
+        transition: opacity 0.3s;
+
         &.selected {
             @include iconColor($color-icon);
+            @include iconSize(calc($nav-bar-icon-size * $nav-bar-item-active-size-multiplier));
+
             opacity: 1;
         }
     }
 }
 
-.navBarContainer {
-    background-color: $color-nav-bar-bg;
-    height: 100%;
-    width: $nav-bar-size;
-}
-
-.navBarContainerMobile {
-    background-color: $color-nav-bar-bg;
-    min-height: $nav-bar-size;
-    width: 100%;
-}
-
 .navBarItemContainer {
-    border-right: $nav-bar-item-badge-thickness solid transparent;
+    border-color: transparent;
     cursor: pointer;
-    height: $nav-bar-item-height;
-    width: 100%;
 
     &.selected {
-        border-right: $nav-bar-item-badge-thickness solid $color-primary-selected;
-    }
-}
-
-.navBarItemContainerMobile {
-    border-bottom: $nav-bar-item-badge-thickness solid transparent;
-    cursor: pointer;
-    height: 100%;
-    width: $nav-bar-item-height;
-
-    &.selected {
-        border-bottom: $nav-bar-item-badge-thickness solid $color-primary-selected;
+        border-color: $color-primary-selected;
     }
 }

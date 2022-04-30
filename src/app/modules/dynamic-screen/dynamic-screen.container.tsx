@@ -13,10 +13,11 @@ const DynamicScreenContainer = () => {
     useApi(fetchScreen, [pageName]);
 
   return (
-    <Flex className={styles.dynamicScreenContainer} w="full">
-      {dynamicScreenData && !isDynamicScreenDataLoading ? (
+    <Flex w="full">
+      {dynamicScreenData ? (
         <DynamicScreenView
           pageName={pageName}
+          isLoading={isDynamicScreenDataLoading}
           dynamicScreenData={dynamicScreenData}
         />
       ) : (

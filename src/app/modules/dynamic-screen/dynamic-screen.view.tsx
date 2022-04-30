@@ -1,4 +1,12 @@
-import { Center, Flex, Heading, Image, Link, VStack } from '@chakra-ui/react';
+import {
+  Center,
+  Flex,
+  Heading,
+  Image,
+  Link,
+  Spinner,
+  VStack,
+} from '@chakra-ui/react';
 import React from 'react';
 import { ScreenApiResponse } from '../../api/screen/screen.model';
 import styles from './dynamic-screen.module.scss';
@@ -6,46 +14,58 @@ import styles from './dynamic-screen.module.scss';
 interface DynamicScreenViewProps {
   pageName?: string;
   dynamicScreenData: ScreenApiResponse;
+  isLoading?: boolean;
 }
 
 export const DynamicScreenView = ({
   pageName,
   dynamicScreenData,
+  isLoading,
 }: DynamicScreenViewProps) => {
   return (
     <VStack
       as={Flex}
-      alignItems="start"
-      className={styles.dynamicScreenViewContainer}
-      pt={['5rem', '8rem', '10rem']}
+      w="full"
+      alignItems={{ base: 'center', md: 'start' }}
+      pt={{ base: '0', sm: '1rem', md: '6.5rem' }}
     >
-      <Heading size="xl">{pageName}</Heading>
-      <Center
-        className={styles.dynamicScreenViewContent}
+      <VStack
+        as={Flex}
         w={{
-          sm: '15rem',
-          md: '40rem',
-          lg: '35rem',
-          xl: '35rem',
-          '2xl': '40rem',
+          base: '95%',
+          sm: '95%',
+          md: '95%',
+          lg: '60%',
+          xl: '40%',
+          '2xl': '30%',
         }}
         h={{
-          sm: '8rem',
+          base: '15rem',
+          sm: '25rem',
           md: '25rem',
-          lg: '25rem',
-          xl: '23rem',
-          '2xl': '25rem',
+          lg: '20rem',
+          xl: '20rem',
+          '2xl': '23rem',
         }}
       >
-        <Image
-          p="0.5rem"
-          src={dynamicScreenData.message}
-          alt="Cute Dog"
-          boxSize="full"
-          objectFit="scale-down"
-        />
-        <Link rel="preload" as="image" href={dynamicScreenData.message} />
-      </Center>
+        <Heading size="xl" w="full">
+          {pageName}
+        </Heading>
+        <Center w="full" h="full" className={styles.dynamicScreenViewContent}>
+          {isLoading ? (
+            <Spinner size="xl" />
+          ) : (
+            <Image
+              p="0.5rem"
+              src={dynamicScreenData.message}
+              alt="Cute Dog Picture"
+              boxSize="full"
+              objectFit="scale-down"
+            />
+          )}
+          <Link rel="preload" as="image" href={dynamicScreenData.message} />
+        </Center>
+      </VStack>
     </VStack>
   );
 };

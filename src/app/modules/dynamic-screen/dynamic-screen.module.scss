@@ -1,18 +1,5 @@
 @import "../../components/settings/colors.scss";
 
-.dynamicScreenContainer {
-    @media only screen and (max-device-width: 768px) {
-        justify-content: center;
-        padding-top: 0;
-    }
-}
-
-.dynamicScreenViewContainer {
-    @media only screen and (max-device-width: 768px) {
-        padding-top: 0;
-    }
-
-    .dynamicScreenViewContent {
-        background-color: $color-secondary-bg;
-    }
+.dynamicScreenViewContent {
+    background-color: $color-secondary-bg;
 }

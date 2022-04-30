@@ -9,7 +9,6 @@ import styles from './nav-bar.module.scss';
 interface NavBarItemProps extends NavBarItemData {
   isSelected?: boolean;
   className: string;
-  isMobile?: boolean;
   onItemSelect?: () => void;
 }
 
@@ -18,7 +17,6 @@ export const NavBarItem: React.FC<NavBarItemProps> = ({
   redirectPath,
   isSelected,
   className,
-  isMobile,
   onItemSelect,
 }) => {
   const iconElement = (
@@ -32,14 +30,14 @@ export const NavBarItem: React.FC<NavBarItemProps> = ({
 
   return (
     <Center
-      className={classnames(
-        isMobile
-          ? styles.navBarItemContainerMobile
-          : styles.navBarItemContainer,
-        {
-          [styles.selected]: isSelected,
-        }
-      )}
+      className={classnames(styles.navBarItemContainer, {
+        [styles.selected]: isSelected,
+      })}
+      w={{ base: '4.5rem', md: '100%' }}
+      h={{ base: '100%', md: '4.5rem' }}
+      pt={{ base: '0.7rem', md: '0' }}
+      borderBottomWidth={{ base: '0.25rem', md: 0 }}
+      borderRightWidth={{ base: 0, md: '0.25rem' }}
       onClick={onItemSelect}
     >
       {redirectPath ? (

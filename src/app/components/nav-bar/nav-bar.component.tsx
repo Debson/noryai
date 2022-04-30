@@ -1,10 +1,11 @@
-import { useMediaQuery } from '@chakra-ui/react';
+import { Box, Flex, SimpleGrid, VStack } from '@chakra-ui/react';
+import classnames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../store';
 import { setScreenStateNameChangeRequest } from '../../store/screen';
-import { NavBarDesktopView } from './nav-bar-desktop.view';
-import { NavBarMobileView } from './nav-bar-mobile.view';
+import { NavBarItem } from './nav-bar-item';
 import { NavBarItemData } from './nav-bar.model';
+import styles from './nav-bar.module.scss';
 
 export interface NavBarProps {
   headeritem: NavBarItemData;
@@ -20,7 +21,10 @@ export const NavBar: React.FC<NavBarProps> = ({
   const dispatch = useAppDispatch();
   const [selectedItemId, setSelectedItemId] = useState<string>();
 
-  const [isMobile] = useMediaQuery('(max-device-width: 768px)');
+  const displayedColumns: NavBarItemData[] = [
+    ...(navBarItems ?? []),
+    ...(footerItem ? [footerItem] : []),
+  ];
 
   useEffect(() => {
     /** Initially always set current page as the main page,
@@ -55,21 +59,72 @@ export const NavBar: React.FC<NavBarProps> = ({
   const isItemSelected = (itemData: NavBarItemData) =>
     itemData.id === selectedItemId;
 
-  return isMobile ? (
-    <NavBarMobileView
-      headeritem={headeritem}
-      navBarItems={navBarItems}
-      footerItem={footerItem}
-      isItemSelected={isItemSelected}
-      onItemSelect={handleOnItemSelect}
-    />
-  ) : (
-    <NavBarDesktopView
-      headeritem={headeritem}
-      navBarItems={navBarItems}
-      footerItem={footerItem}
-      isItemSelected={isItemSelected}
-      onItemSelect={handleOnItemSelect}
-    />
+  return (
+    <Flex
+      as={Flex}
+      spacing="1rem"
+      flexDirection={{ base: 'row', md: 'column' }}
+      w={{ base: 'full', md: '5.5rem' }}
+      h={{ base: '3.5rem', md: 'full' }}
+      className={styles.navBarContainer}
+    >
+      <Box>
+        <NavBarItem
+          key={`nav-bar-item-${headeritem.id}`}
+          {...headeritem}
+          className={styles.headerIcon}
+          onItemSelect={() => handleOnItemSelect(headeritem.id)}
+        />
+      </Box>
+
+      <Flex
+        w="full"
+        flexDirection={{ base: 'row', md: 'column' }}
+        justifyContent={{ base: 'end', md: 'center' }}
+      >
+        {navBarItems?.length && (
+          <SimpleGrid
+            as={Flex}
+            columns={{ base: navBarItems.length, md: 1 }}
+            w={{ base: 'max-content', md: 'full' }}
+            h={{ base: 'full', md: 'auto' }}
+            alignItems={{ base: 'start', md: 'start' }}
+            justifyItems="center"
+            justifyContent={{ base: 'center', md: 'unset' }}
+          >
+            {navBarItems?.map(navBarItem => (
+              <NavBarItem
+                key={`nav-bar-item-${navBarItem.id}`}
+                {...navBarItem}
+                isSelected={isItemSelected(navBarItem)}
+                className={classnames(styles.elementIcon, {
+                  [styles.selected]: isItemSelected(navBarItem),
+                })}
+                onItemSelect={() => handleOnItemSelect(navBarItem.id)}
+              />
+            ))}
+          </SimpleGrid>
+        )}
+
+        {footerItem && (
+          <Flex
+            w={{ base: 'auto', md: 'full' }}
+            h={{ base: 'auto', md: 'full' }}
+            alignItems="end"
+            pb={{ base: '0', md: '1.5rem' }}
+          >
+            <NavBarItem
+              key={`nav-bar-item-${footerItem.id}`}
+              {...footerItem}
+              isSelected={isItemSelected(footerItem)}
+              className={classnames(styles.elementIcon, {
+                [styles.selected]: isItemSelected(footerItem),
+              })}
+              onItemSelect={() => handleOnItemSelect(footerItem.id)}
+            />
+          </Flex>
+        )}
+      </Flex>
+    </Flex>
   );
 };
