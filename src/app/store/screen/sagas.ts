@@ -3,7 +3,7 @@ import { all, put, takeLatest } from 'redux-saga/effects';
 import * as actions from './actions';
 import { ACTION_TYPES, ScreenState } from './types';
 
-function* setPageName({
+export function* setPageName({
   payload,
 }: PayloadAction<Pick<ScreenState, 'pageName'>>) {
   yield put(actions.setScreenStateNameChangeSuccess(payload));

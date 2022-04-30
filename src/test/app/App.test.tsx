@@ -7,7 +7,7 @@ import App from '../../app/app';
 import { render } from '../config/test-utils';
 import { screenApiMockResponse } from './app.fixtures';
 
-describe('', () => {
+describe('[App integration tests]', () => {
   let baseApiMock: MockAdapter;
 
   beforeEach(() => {
