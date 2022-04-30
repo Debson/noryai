@@ -12,7 +12,6 @@ export const useApi = <T>(
     setLoading(true);
     api()
       .then(response => {
-        console.log('api fetch');
         setData(response);
         setError(false);
       })

@@ -1,0 +1,8 @@
+export enum ACTION_TYPES {
+  SET_SCREEN_STATE_NAME_CHANGE_REQUEST = '@@screen/SET_SCREEN_STATE_NAME_CHANGE_REQUEST',
+  SET_SCREEN_STATE_NAME_CHANGE_SUCCESS = '@@screen/SET_SCREEN_STATE_NAME_CHANGE_SUCCESS',
+}
+
+export interface ScreenState {
+  pageName: string | undefined;
+}

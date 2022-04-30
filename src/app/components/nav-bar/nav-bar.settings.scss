@@ -1,10 +1,6 @@
-$nav-bar-size: 4.5rem;
+$nav-bar-size: 5rem;
 $nav-bar-header-icon-size: 2.2rem;
 $nav-bar-icon-size: 1.2rem;
 $nav-bar-item-height: 4.5rem;
 $nav-bar-item-active-size-multiplier: 1.1;
 $nav-bar-item-badge-thickness: 0.2rem;
-
-:root {
-    --nav-bar-size: #{$nav-bar-size};
-}

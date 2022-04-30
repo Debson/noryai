@@ -1,5 +1,5 @@
-import { NavBarState } from './navbar/types';
+import { ScreenState } from './screen/types';
 
 export interface RootState {
-  navBar: NavBarState;
+  screen: ScreenState;
 }

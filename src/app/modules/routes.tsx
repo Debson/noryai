@@ -1,4 +1,4 @@
-import { Flex, HStack, Spinner } from '@chakra-ui/react';
+import { Flex, HStack, Spinner, useMediaQuery, VStack } from '@chakra-ui/react';
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {
@@ -7,12 +7,14 @@ import {
   appNavItemsData,
 } from '../app.fixtures';
 import { NavBar } from '../components/nav-bar/nav-bar.component';
-const HomeContainer = React.lazy(() => import('./home/home.container'));
+const DynamicScreenContainer = React.lazy(
+  () => import('./dynamic-screen/dynamic-screen.container')
+);
 
 export const AppRoutes = () => {
   return (
     <BrowserRouter>
-      <HStack as={Flex} h="full" w="full" spacing="3rem" alignItems="start">
+      <Wrapper>
         <NavBar
           headeritem={appNavBarHeaderItemData}
           navBarItems={appNavItemsData}
@@ -20,10 +22,27 @@ export const AppRoutes = () => {
         />
         <Suspense fallback={<Spinner />}>
           <Routes>
-            <Route path="/" element={<HomeContainer />} />
+            <Route path="/*" element={<DynamicScreenContainer />} />
           </Routes>
         </Suspense>
-      </HStack>
+      </Wrapper>
     </BrowserRouter>
+  );
+};
+
+const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [isMobile] = useMediaQuery('(max-device-width: 768px)');
+  if (isMobile) {
+    return (
+      <VStack as={Flex} h="full" w="full" spacing="2rem" alignItems="start">
+        {children}
+      </VStack>
+    );
+  }
+
+  return (
+    <HStack as={Flex} h="full" w="full" spacing="2rem" alignItems="start">
+      {children}
+    </HStack>
   );
 };

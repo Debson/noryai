@@ -1,14 +1,14 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { all, fork } from 'redux-saga/effects';
-import { navBarReducer } from './navbar';
-import { navBarSaga } from './navbar/sagas';
+import { screenReducer } from './screen';
+import { screenStateSaga } from './screen/sagas';
 import { RootState } from './state.model';
 
-const appReducer = combineReducers<RootState>({ navBar: navBarReducer });
+const appReducer = combineReducers<RootState>({ screen: screenReducer });
 
 export function* rootSaga() {
-  yield all([fork(navBarSaga)]);
+  yield all([fork(screenStateSaga)]);
 }
 
 const sagaMiddleware = createSagaMiddleware();

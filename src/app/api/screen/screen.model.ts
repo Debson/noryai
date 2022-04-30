@@ -1,4 +1,4 @@
-export interface HomeApiResponse {
+export interface ScreenApiResponse {
   message: string;
   status: string;
 }
