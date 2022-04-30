@@ -1,3 +1,48 @@
-.buttonContainer {
-    padding: 1rem;
+@import "./nav-bar.settings";
+@import "../settings/colors.scss";
+
+@mixin iconSize($size) {
+    height: $size;
+    width: $size;
+}
+
+@mixin iconColor($color) {
+    path {
+        fill: $color;
+    }
+}
+
+.navBarContainer {
+    background-color: $color-nav-bar-bg;
+    height: 100%;
+    width: $nav-bar-size;
+
+    .headerIcon {
+        @include iconSize($nav-bar-header-icon-size);
+        @include iconColor($color-icon);
+    }
+
+    .elementIcon {
+        @include iconSize($nav-bar-icon-size);
+
+        // #region Disabled styling
+        @include iconColor($color-icon-disabled);
+        opacity: 0.5;
+        // #endregion Disabled styling
+
+        &.selected {
+            @include iconColor($color-icon);
+            opacity: 1;
+        }
+    }
+}
+
+.navBarItemContainer {
+    border-right: $nav-bar-item-badge-thickness solid transparent;
+    cursor: pointer;
+    height: $nav-bar-item-height;
+
+    &.selected {
+        border-right: $nav-bar-item-badge-thickness solid $color-primary-selected;
+    }
 }

@@ -4,25 +4,26 @@
 // #region Base color definitions
 $white: #fff;
 $charocoal-200: #d4e2ed;
-$charocoal-500: #4d667f;
+$charocoal-600: #2f3e4d;
 $grape-500: #4d3088;
 $primary-dark-100: #2f3e4d;
 $grape-300: #a086d4;
 $grape-600: #3c256a;
-// #regionend Base color definitions
+// #endregion Base color definitions
 
 // #region Semantic color definitions */
 $color-primary-bg: $white;
 $color-secondary-bg: $charocoal-200;
 $color-icon: $grape-500;
-$color-icon-disabled: $charocoal-500;
+$color-icon-disabled: $charocoal-600;
 $color-text: $primary-dark-100;
 $color-primary-selected: $grape-300;
 $color-secondary-selected: $grape-600;
+$color-nav-bar-bg: $charocoal-200;
 // #regionend Semantic color definitions */
 
 // #region Color exports */
 :export {
     colorText: $color-text;
 }
-// #regionend Color exports */
+// #endregion Color exports */

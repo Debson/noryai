@@ -8,6 +8,7 @@ const chakraCustomTheme = extendTheme({
     global: {
       body: {
         color: colors.colorText,
+        height: 'full',
       },
     },
   },
@@ -17,12 +18,10 @@ const chakraCustomTheme = extendTheme({
   },
 });
 
-const App = () => {
-  return (
-    <ChakraProvider theme={chakraCustomTheme}>
-      <AppRoutes />
-    </ChakraProvider>
-  );
-};
+const App = () => (
+  <ChakraProvider theme={chakraCustomTheme}>
+    <AppRoutes />
+  </ChakraProvider>
+);
 
 export default App;

@@ -1,6 +1,7 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Center, Flex, Heading, Image, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { HomeApiResponse } from '../../api/home/home.model';
+import styles from './home.module.scss';
 
 interface HomeViewProps {
   homeScreenData: HomeApiResponse;
@@ -8,14 +9,16 @@ interface HomeViewProps {
 
 export const HomeView = ({ homeScreenData }: HomeViewProps) => {
   return (
-    <Box>
+    <VStack as={Flex} alignItems="start" pt="136">
       <Heading size="lg">Cute Dog</Heading>
-      <img
-        src={homeScreenData.message}
-        alt="Cute Dog"
-        width={400}
-        height={300}
-      />
-    </Box>
+      <Center className={styles.homeViewContent}>
+        <Image
+          src={homeScreenData.message}
+          alt="Cute Dog"
+          boxSize="full"
+          objectFit="scale-down"
+        />
+      </Center>
+    </VStack>
   );
 };
