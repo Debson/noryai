@@ -3,7 +3,6 @@ import React from 'react';
 import { useApi } from '../../api/common/api-hooks';
 import { fetchScreen } from '../../api/screen/screen.api';
 import { useScreenState } from '../../store/screen/utils';
-import styles from './dynamic-screen.module.scss';
 import { DynamicScreenView } from './dynamic-screen.view';
 
 const DynamicScreenContainer = () => {

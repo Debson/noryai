@@ -39,6 +39,7 @@ export const NavBarItem: React.FC<NavBarItemProps> = ({
       borderBottomWidth={{ base: '0.25rem', md: 0 }}
       borderRightWidth={{ base: 0, md: '0.25rem' }}
       onClick={onItemSelect}
+      data-testid="nav-bar-item"
     >
       {redirectPath ? (
         <ReactRouterLink to={redirectPath}>{iconElement}</ReactRouterLink>

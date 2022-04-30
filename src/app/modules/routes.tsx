@@ -5,7 +5,7 @@ import {
   appNavBarFooterItemData,
   appNavBarHeaderItemData,
   appNavItemsData,
-} from '../app.fixtures';
+} from '../../test/app/app.fixtures';
 import { NavBar } from '../components/nav-bar/nav-bar.component';
 const DynamicScreenContainer = React.lazy(
   () => import('./dynamic-screen/dynamic-screen.container')

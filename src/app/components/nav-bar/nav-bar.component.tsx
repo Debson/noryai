@@ -1,4 +1,4 @@
-import { Box, Flex, SimpleGrid, VStack } from '@chakra-ui/react';
+import { Box, Flex, SimpleGrid } from '@chakra-ui/react';
 import classnames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../store';
@@ -20,11 +20,6 @@ export const NavBar: React.FC<NavBarProps> = ({
 }) => {
   const dispatch = useAppDispatch();
   const [selectedItemId, setSelectedItemId] = useState<string>();
-
-  const displayedColumns: NavBarItemData[] = [
-    ...(navBarItems ?? []),
-    ...(footerItem ? [footerItem] : []),
-  ];
 
   useEffect(() => {
     /** Initially always set current page as the main page,
@@ -79,6 +74,7 @@ export const NavBar: React.FC<NavBarProps> = ({
 
       <Flex
         w="full"
+        h="full"
         flexDirection={{ base: 'row', md: 'column' }}
         justifyContent={{ base: 'end', md: 'center' }}
       >

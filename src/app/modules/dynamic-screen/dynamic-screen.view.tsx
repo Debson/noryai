@@ -48,7 +48,7 @@ export const DynamicScreenView = ({
           '2xl': '23rem',
         }}
       >
-        <Heading size="xl" w="full">
+        <Heading size="xl" w="full" data-testid="dynamic-screen-header">
           {pageName}
         </Heading>
         <Center w="full" h="full" className={styles.dynamicScreenViewContent}>
@@ -61,6 +61,7 @@ export const DynamicScreenView = ({
               alt="Cute Dog Picture"
               boxSize="full"
               objectFit="scale-down"
+              data-testid="dynamic-screen-image"
             />
           )}
           <Link rel="preload" as="image" href={dynamicScreenData.message} />
